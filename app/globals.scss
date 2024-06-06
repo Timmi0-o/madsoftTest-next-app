@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #343A40;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6c757d;
+  border-radius: 4px;
+}
+
+
+$foreground-rgb: #F8F9FA;
+$text-accent: #212529;
+
+body {
+  color: $text-accent;
+  background-color: $foreground-rgb;
+}
+
+.utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
