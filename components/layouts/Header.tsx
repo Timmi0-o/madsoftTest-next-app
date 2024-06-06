@@ -29,7 +29,7 @@ export const Header = () => {
 	return (
 		<div
 			className={
-				'relative w-full bg-[#212529] shadow-[#787878] shadow-sm mb-[30px] ' +
+				'fixed w-full bg-[#212529] shadow-[#787878] shadow-sm z-[50] ' +
 				roboto.className
 			}
 		>

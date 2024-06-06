@@ -4,38 +4,82 @@ import { Container } from '@/components/ui/Container'
 import { Timer } from '@/components/ui/Timer'
 import { useEffect, useState } from 'react'
 
+interface SelectedAnswers {
+	[key: number]: number
+}
+
 function NowTest() {
-	const [currentQuest, setCurrentQuest] = useState(1)
+	const curTest = Number(localStorage.getItem('nowTest'))
+	const [currentQuest, setCurrentQuest] = useState(curTest || 1)
 
-	const testTimer = localStorage.getItem('testTime')
-
-	console.log('testTimer', testTimer)
-
+	// Берем из хранилища кол-во секунд теста и создаем время для таймера
+	const testTimer = localStorage.getItem('testTime') || '0'
 	const time = new Date()
 	time.setSeconds(time.getSeconds() + Number(testTimer))
 
-	const numberQuestions = localStorage.getItem('numberQuestions')
+	// Количество вопросов и попыток в тесте
+	const numberQuestions = localStorage.getItem('numberQuestions') || '0'
 	const attempt = localStorage.getItem('attempt')
 
+	// Массив с количеством вопросов в тесте
 	const questions = progressTest(Number(numberQuestions))
 
+	// Если попыток 0, то пользователя редиректит на страницу с результатом
 	useEffect(() => {
 		if (Number(attempt) === 0) {
 			window.location.href = '/result'
 		}
 	}, [attempt])
 
-	const [questCheck, setQuestCheck] = useState(false)
-	const [answerId, setAnswerId] = useState(0)
+	// Сохраняем id теста, на котором остановились
+	useEffect(() => {
+		localStorage.setItem('nowTest', currentQuest.toString())
+	}, [currentQuest])
 
-	const isQuestCheck = (id: number) => {
-		if (answerId === id) {
-			setQuestCheck(!questCheck)
+	// Записываем выбранные ответы в объект
+	const initialSelectedAnswers = JSON.parse(
+		localStorage.getItem('selectsAnswers') || '{}'
+	)
+	const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
+		initialSelectedAnswers
+	)
+
+	const [correctAnswers, setCorrectAnswers] = useState(0)
+	console.log('correctAnswers', correctAnswers)
+
+	const selectAnswer = (
+		questIndex: number,
+		answerIndex: number,
+		rightAnswer: number
+	) => {
+		const previouslySelectedAnswer = selectedAnswers[questIndex]
+
+		setSelectedAnswers((prevSelectedAnswers) => ({
+			...prevSelectedAnswers,
+			[questIndex]: answerIndex,
+		}))
+
+		if (answerIndex === rightAnswer - 1) {
+			if (previouslySelectedAnswer !== rightAnswer - 1) {
+				setCorrectAnswers((prev) => prev + 1)
+				localStorage.setItem('correctAnswers', (correctAnswers + 1).toString())
+			}
+		} else {
+			if (previouslySelectedAnswer === rightAnswer - 1) {
+				setCorrectAnswers((prev) => prev - 1)
+				localStorage.setItem('correctAnswers', (correctAnswers - 1).toString())
+			}
 		}
+		console.log('correctAnswers', correctAnswers)
 	}
+
+	useEffect(() => {
+		localStorage.setItem('selectsAnswers', JSON.stringify(selectedAnswers))
+	}, [selectedAnswers])
+
 	return (
 		<Container>
-			<div className='flex flex-col justify-center gap-[60px]'>
+			<div className='flex flex-col justify-center gap-[60px] px-[20px] xl:px-0'>
 				<div className='flex items-center justify-between'>
 					<div className='flex items-center gap-[40px]'>
 						<div className='flex items-center gap-[25px]'>
@@ -45,11 +89,14 @@ function NowTest() {
 					</div>
 					<p className='text-[22px] font-[500] px-[10px] bg-[#f0f0f0] rounded-[8px] border-[1px] border-[#0000003c]'>{`Осталось попыток: ${attempt}`}</p>
 				</div>
-
 				<div className='flex flex-wrap gap-[10px] w-full min-h-[100px]'>
 					{questions.map((quest, i) => (
 						<div
-							onClick={() => setCurrentQuest(i + 1)}
+							onClick={() =>
+								Object.keys(selectedAnswers).length >= i
+									? setCurrentQuest(i + 1)
+									: ''
+							}
 							className={`relative flex flex-col justify-center items-center duration-300 ease-out w-fit h-fit cursor-pointer ${
 								currentQuest === i + 1
 									? 'translate-y-[10px]'
@@ -57,14 +104,8 @@ function NowTest() {
 							}`}
 							key={quest}
 						>
-							{/* {currentQuest === i + 1 && (
-								<p className='absolute px-[4px] rounded-[4px] bg-[#ebebeb] text-[18px] font-bold top-[-40px]'>
-									{i + 1}
-								</p>
-							)} */}
-
 							<div
-								className={`w-[80px] h-[15px] border-[1px] duration-300 ease-out transition-all rounded-[4px]  ${
+								className={`w-[80px] h-[15px] py-[5px] border-[1px] duration-300 ease-out transition-all rounded-[4px]  ${
 									currentQuest === i + 1
 										? 'bg-[#cd1c1c] border-[#cd1c1c]'
 										: currentQuest < i + 1
@@ -77,32 +118,33 @@ function NowTest() {
 						</div>
 					))}
 				</div>
+
+				{/* Вопрос с ответами */}
 				<div className='border-[1px] border-[#333] rounded-[12px] h-[250px] p-[15px] bg-[#f3f3f3]'>
 					{quests.map(
 						(quest, i) =>
 							i + 1 === currentQuest && (
 								<div key={i}>
-									<p className='text-[26px] px-[5px] bg-[#e9e9e9] rounded-[12px] w-fit'>
+									<p className='text-[26px] px-[10px] bg-[#e9e9e9] rounded-[12px] w-fit'>
 										{quest.title}
 									</p>
 									<div className='mt-[20px]'>
-										{quest.answer.map((answer, i) => (
+										{quest.answer.map((answer, j) => (
 											<div
-												onClick={() => {
-													setAnswerId(i)
-													isQuestCheck(i)
-												}}
-												className='flex gap-[10px]'
-												key={i}
+												onClick={() => selectAnswer(i, j, quest.rightAnswer)}
+												className='flex items-center gap-[10px] cursor-pointer mb-[10px]'
+												key={j}
 											>
-												<div
-													className={`size-[24px] border-[1px] border-black cursor-pointer ${
-														questCheck && 'bg-black'
-													}`}
-												></div>
-												<p className='text-[24px] mb-[10px] cursor-pointer'>
-													{answer}
-												</p>
+												<div className='flex justify-center items-center size-[24px]'>
+													<div
+														className={`border-[1px] duration-300 transition-all  border-black rounded-[4px] ${
+															selectedAnswers[i] === j
+																? 'bg-black size-[22px]'
+																: 'bg-transparent size-[24px] '
+														}`}
+													></div>
+												</div>
+												<p className='text-[24px]'>{answer}</p>
 											</div>
 										))}
 									</div>
@@ -111,17 +153,32 @@ function NowTest() {
 					)}
 				</div>
 				<div className='flex justify-between w-full'>
-					<div className='w-[300px] duration-300 '>
+					<div className={`w-[300px] duration-300 `}>
 						<Button
+							className={`${
+								Object.keys(selectedAnswers).length !== currentQuest
+									? 'bg-black cursor-default'
+									: ''
+							} `}
 							title={
 								currentQuest === Number(numberQuestions)
 									? 'Закончить тест'
 									: 'Следующий вопрос'
 							}
 							onClick={() => {
-								if (currentQuest === Number(numberQuestions)) {
+								if (
+									currentQuest === Number(numberQuestions) &&
+									Object.keys(selectedAnswers).length === currentQuest
+								) {
 									window.location.href = '/result'
-								} else {
+									localStorage.setItem('completedQuest', numberQuestions)
+									localStorage.setItem(
+										'correctAnswers',
+										correctAnswers.toString()
+									)
+								} else if (
+									Object.keys(selectedAnswers).length === currentQuest
+								) {
 									setCurrentQuest(currentQuest + 1)
 								}
 							}}
@@ -134,6 +191,8 @@ function NowTest() {
 							onClick={() => {
 								const attempt = localStorage.getItem('attempt')
 								localStorage.setItem('totalSeconds', testTimer)
+								localStorage.setItem('nowTest', '1')
+								localStorage.setItem('selectsAnswers', '0')
 								if (Number(attempt) >= 1) {
 									localStorage.setItem(
 										'attempt',
@@ -150,6 +209,9 @@ function NowTest() {
 	)
 }
 
+export default NowTest
+
+// Получаем количество вопросов в вопросе и делаем из этого массив
 function progressTest(numberQuestions: number) {
 	let quest = []
 	for (let i = 0; i < Number(numberQuestions); i++) {
@@ -160,8 +222,7 @@ function progressTest(numberQuestions: number) {
 	return quest
 }
 
-export default NowTest
-
+// Импровизационная БД
 const quests = [
 	{
 		title: 'Что должен знать Frontend разработчик?',
@@ -183,7 +244,6 @@ const quests = [
 		answer: ['1 час', 'часов 10 (правильно)', 'Не помню'],
 		rightAnswer: 2,
 	},
-	// Добавим еще вопросы
 	{
 		title: 'Что такое HTML?',
 		answer: [

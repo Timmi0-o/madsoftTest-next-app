@@ -56,6 +56,7 @@ export const TestItem = ({
 									numberQuestions.toString()
 								)
 								localStorage.setItem('attempt', attempt.toString())
+								localStorage.setItem('titleTest', title)
 							}}
 						/>
 					</Link>

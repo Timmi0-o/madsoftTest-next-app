@@ -6,7 +6,7 @@ type TimerProps = {
 	time?: string
 }
 
-export const Timer: React.FC<TimerProps> = ({ timerTime, time }) => {
+export const Timer: React.FC<TimerProps> = ({ timerTime }) => {
 	const savedTotalSeconds = localStorage.getItem('totalSeconds')
 
 	const initialSeconds = savedTotalSeconds
