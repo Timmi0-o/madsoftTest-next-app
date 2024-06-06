@@ -1,16 +1,21 @@
 'use client'
-
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+interface FinishedTest {
+	title: string
+	score: number
+}
+
 export default function FinishedTest() {
-	const [tests, setTests] = useState([])
+	const [tests, setTests] = useState<FinishedTest[]>([])
 
 	useEffect(() => {
-		if (localStorage.getItem('finishedTests')) {
-			setTests(JSON.parse(localStorage.getItem('finishedTests')))
+		const storedTests = localStorage.getItem('finishedTests')
+		if (storedTests !== null) {
+			setTests(JSON.parse(storedTests))
 		}
 	}, [])
 

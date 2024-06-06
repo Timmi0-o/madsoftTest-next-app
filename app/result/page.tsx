@@ -13,7 +13,7 @@ export default function FinishedTest() {
 	const [leftTime, setLeftTime] = useState<string | null>(null)
 	const [attempt, setAttempt] = useState<string | null>(null)
 	const questRef = useRef<number[]>([])
-	const correctAnswersRef = useRef<number>()
+	const correctAnswersRef = useRef<number>(0)
 	const scoresRef = useRef<number>()
 	const isTestAdded = useRef<boolean>(false) // Используем useRef для отслеживания добавления теста
 
@@ -23,9 +23,9 @@ export default function FinishedTest() {
 
 		const quest = progressTest(completedQuest)
 		questRef.current = quest
-		const correctAnswers = Number(localStorage.getItem('correctAnswers'))
+		const correctAnswers = Number(localStorage.getItem('correctAnswers')) ?? 0
 		correctAnswersRef.current = correctAnswers
-		console.log('correctAnswersRef', correctAnswersRef)
+		// console.log('correctAnswersRef', correctAnswersRef)
 		setLeftTime(storedTime)
 		setAttempt(attempt)
 
