@@ -5,7 +5,7 @@ export default function Test() {
 	return (
 		<Container>
 			<div>
-				<p className='text-[40px] md:text-[60px] text-center font-[500] text-[#212529] my-[30px] px-[20px] xl:px-0'>
+				<p className='text-[40px] md:text-[60px] text-center font-[500] text-[#212529] my-[30px] px-[10px] xl:px-0'>
 					Русский язык
 				</p>
 				<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>

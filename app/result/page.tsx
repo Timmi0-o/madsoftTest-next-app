@@ -68,11 +68,11 @@ export default function FinishedTest() {
 
 	return (
 		<div className='flex flex-col items-center w-full'>
-			<p className=' text-[60px]'>Тест закончен</p>
+			<p className='text-[40px] md:text-[60px]'>Тест закончен</p>
 			<div className='my-[20px]'>
 				{questRef.current.map((i) => (
 					<p
-						className='text-[26px] px-[10px] bg-[#f0f0f0] my-[20px] rounded-[8px]'
+						className='text-[18px] md:text-[26px] px-[10px] bg-[#f0f0f0] my-[20px] rounded-[8px]'
 						key={i}
 					>{`Ответ на вопрос ${i + 1} записан`}</p>
 				))}
