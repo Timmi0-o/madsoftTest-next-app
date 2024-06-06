@@ -5,10 +5,10 @@ function Page() {
 	return (
 		<Container>
 			<div>
-				<p className='text-[60px] text-center font-[500] text-[#212529] mb-[30px]'>
+				<p className='text-[40px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0'>
 					Ваши тесты
 				</p>
-				<div className='grid grid-cols-3 gap-[20px]'>
+				<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
 					{items.map((item, i) => (
 						<div key={i}>
 							<TestItem
