@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 interface MyProviderProps {
 	children: ReactNode
 }
-export default function MyProvider({ children }: MyProviderProps) {
+function MyProvider({ children }: MyProviderProps) {
 	const router = usePathname()
 
 	useEffect(() => {
@@ -31,6 +31,8 @@ export default function MyProvider({ children }: MyProviderProps) {
 		</div>
 	)
 }
+
+export default MyProvider
 
 const clearLocalStorage = () => {
 	localStorage.setItem('totalSeconds', '0')
