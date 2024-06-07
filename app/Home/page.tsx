@@ -15,7 +15,7 @@ const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
 	const clearLocalStorage = () => {
 		localStorage.setItem('totalSeconds', '0')
 		localStorage.setItem('attempt', '0')
-		localStorage.setItem('nowTest', '0')
+		localStorage.setItem('currentQuest', '0')
 		localStorage.setItem('testTime', '0')
 		localStorage.setItem('numberQuestions', '0')
 		localStorage.setItem('selectsAnswers', '0')

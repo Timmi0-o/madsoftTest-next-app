@@ -9,7 +9,7 @@ interface SelectedAnswers {
 }
 
 function NowTest() {
-	const curTest = Number(localStorage.getItem('nowTest'))
+	const curTest = Number(localStorage.getItem('currentQuest'))
 	const [currentQuest, setCurrentQuest] = useState(curTest || 1)
 
 	// Берем из хранилища кол-во секунд теста и создаем время для таймера
@@ -19,7 +19,7 @@ function NowTest() {
 
 	// Количество вопросов и попыток в тесте
 	const numberQuestions = localStorage.getItem('numberQuestions') || '0'
-	const attempt = localStorage.getItem('attempt')
+	const attempt = localStorage.getItem('attempt') || '0'
 
 	// Массив с количеством вопросов в тесте
 	const questions = progressTest(Number(numberQuestions))
@@ -31,9 +31,9 @@ function NowTest() {
 		}
 	}, [attempt])
 
-	// Сохраняем id теста, на котором остановились
+	// Сохраняем id вопроса, на котором остановились
 	useEffect(() => {
-		localStorage.setItem('nowTest', currentQuest.toString())
+		localStorage.setItem('currentQuest', currentQuest.toString())
 	}, [currentQuest])
 
 	// Записываем выбранные ответы в объект
@@ -193,7 +193,6 @@ function NowTest() {
 									) {
 										window.location.href = '/result'
 										localStorage.setItem('completedQuest', numberQuestions)
-										localStorage.setItem(correctAnswers.toString())
 										console.log('correctAnswers', correctAnswers)
 									} else if (
 										Object.keys(selectedAnswers).length === currentQuest
@@ -221,7 +220,7 @@ function NowTest() {
 							onClick={() => {
 								const attempt = localStorage.getItem('attempt')
 								localStorage.setItem('totalSeconds', testTimer)
-								localStorage.setItem('nowTest', '1')
+								localStorage.setItem('currentQuest', '1')
 								localStorage.setItem('selectsAnswers', '0')
 								if (Number(attempt) >= 1) {
 									localStorage.setItem(
