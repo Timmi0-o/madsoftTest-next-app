@@ -86,7 +86,7 @@ export default function FinishedTest() {
 					{`Оценка: ${scoresRef.current}`}
 				</p>
 			</div>
-			<div className='flex flex-wrap gap-[20px]'>
+			<div className='flex justify-center flex-wrap gap-[20px]'>
 				<Link href={'/'}>
 					<Button title='На главную' />
 				</Link>
@@ -98,19 +98,7 @@ export default function FinishedTest() {
 				</Link>
 				{Number(leftTime) >= 2 && Number(attempts) >= 1 ? (
 					<Link href={'/nowTest'}>
-						<Button
-							// onClick={() => {
-							// 	localStorage.setItem(
-							// 		'correctAnswers',
-							// 		correctAnswersRef.current.toString()
-							// 	)
-							// 	console.log(
-							// 		'correctAnswers',
-							// 		localStorage.getItem('correctAnswers')
-							// 	)
-							// }}
-							title='Вернуться к тесту'
-						/>
+						<Button title='Вернуться к тесту' />
 					</Link>
 				) : (
 					''

@@ -99,7 +99,7 @@ function NowTest() {
 
 	return (
 		<Container>
-			<div className='flex flex-col justify-center gap-[60px] px-[20px] xl:px-0'>
+			<div className='flex flex-col justify-center gap-[60px] px-[5px] xl:px-0'>
 				<div className='flex flex-col gap-[10px] md:flex-row md:gap-0 items-center justify-between'>
 					<div className='flex items-center gap-[40px]'>
 						<p className='text-[26px] md:text-[46px] font-[400]'>
