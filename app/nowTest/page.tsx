@@ -153,36 +153,48 @@ function NowTest() {
 					)}
 				</div>
 				<div className='flex justify-between w-full'>
-					<div className={`w-[300px] duration-300 mr-[20px] `}>
-						<Button
-							className={`${
-								Object.keys(selectedAnswers).length !== currentQuest
-									? 'bg-black cursor-default'
-									: ''
-							} `}
-							title={
-								currentQuest === Number(numberQuestions)
-									? 'Закончить тест'
-									: 'Дальше'
-							}
-							onClick={() => {
-								if (
-									currentQuest === Number(numberQuestions) &&
-									Object.keys(selectedAnswers).length === currentQuest
-								) {
-									window.location.href = '/result'
-									localStorage.setItem('completedQuest', numberQuestions)
-									localStorage.setItem(
-										'correctAnswers',
-										correctAnswers.toString()
-									)
-								} else if (
-									Object.keys(selectedAnswers).length === currentQuest
-								) {
-									setCurrentQuest(currentQuest + 1)
+					<div className='flex'>
+						<div className={`w-[250px] duration-300 mr-[20px] `}>
+							<Button
+								className={`${
+									Object.keys(selectedAnswers).length !== currentQuest
+										? 'bg-black cursor-default'
+										: ''
+								} `}
+								title={
+									currentQuest === Number(numberQuestions)
+										? 'Закончить тест'
+										: 'Дальше'
 								}
-							}}
-						/>
+								onClick={() => {
+									if (
+										currentQuest === Number(numberQuestions) &&
+										Object.keys(selectedAnswers).length === currentQuest
+									) {
+										window.location.href = '/result'
+										localStorage.setItem('completedQuest', numberQuestions)
+										localStorage.setItem(
+											'correctAnswers',
+											correctAnswers.toString()
+										)
+									} else if (
+										Object.keys(selectedAnswers).length === currentQuest
+									) {
+										setCurrentQuest(currentQuest + 1)
+									}
+								}}
+							/>
+						</div>
+						<div className={`w-[150px] duration-300 `}>
+							<Button
+								title='Очистить'
+								onClick={() => {
+									const updatedSelectedAnswers = { ...selectedAnswers }
+									delete updatedSelectedAnswers[currentQuest - 1]
+									setSelectedAnswers(updatedSelectedAnswers)
+								}}
+							/>
+						</div>
 					</div>
 					<div className='w-[250px]'>
 						<Button
