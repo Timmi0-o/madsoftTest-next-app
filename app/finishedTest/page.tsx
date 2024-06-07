@@ -25,19 +25,36 @@ export default function FinishedTest() {
 				<div className='text-[32px] md:text-[60px] font-medium'>
 					Завершенные тесты
 				</div>
-				<div className='flex flex-col items-start gap-[30px]'>
-					<div className='flex flex-col gap-[20px]'>
+				<div className='flex flex-col items-center gap-[30px]'>
+					<div className='flex flex-col gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[20px] bg-[#f2f2f2]'>
 						{tests.map((test, i) => (
-							<div key={i} className='flex gap-[10px]'>
+							<div
+								key={i}
+								className='flex justify-between gap-[10px] bg-[#fff] px-[5px] rounded-[8px] py-[4px]'
+							>
 								<p className='text-[22px] md:text-[30px]'>{`${i + 1})`}</p>
 								<div className='flex gap-[5px] text-[22px] md:text-[30px]'>
-									<p className=''>{test.title}</p>
+									<p className=''>
+										{test.title.length > 10
+											? `${test.title.slice(0, 10)}...`
+											: test.title}
+									</p>
 								</div>
 								<div className='flex gap-[5px] text-[22px] md:text-[30px]'>
-									<p className='bg-[#dedede] px-[5px] rounded-[6px]'>
-										Оценка:{' '}
+									<p className='px-[5px]'>Оценка:</p>
+									<p
+										className={`${
+											test.score === 5
+												? 'bg-blue-300'
+												: test.score === 4
+												? ' bg-green-400'
+												: test.score === 3
+												? 'bg-red-400'
+												: 'bg-[#00000046]'
+										} px-[10px] rounded-[6px]`}
+									>
+										{test.score}
 									</p>
-									<p className=''>{test.score}</p>
 								</div>
 							</div>
 						))}
