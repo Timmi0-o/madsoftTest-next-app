@@ -77,6 +77,22 @@ function NowTest() {
 		localStorage.setItem('selectsAnswers', JSON.stringify(selectedAnswers))
 	}, [selectedAnswers])
 
+	function handleEnterKeyPress(event) {
+		if (event.keyCode === 13) {
+			if (
+				currentQuest === Number(numberQuestions) &&
+				Object.keys(selectedAnswers).length === currentQuest
+			) {
+				window.location.href = '/result'
+				localStorage.setItem('completedQuest', numberQuestions)
+				localStorage.setItem('correctAnswers', correctAnswers.toString())
+			} else if (Object.keys(selectedAnswers).length === currentQuest) {
+				setCurrentQuest(currentQuest + 1)
+			}
+		}
+	}
+	document.addEventListener('keydown', handleEnterKeyPress)
+
 	return (
 		<Container>
 			<div className='flex flex-col justify-center gap-[60px] px-[20px] xl:px-0'>
@@ -120,12 +136,12 @@ function NowTest() {
 				</div>
 
 				{/* Вопрос с ответами */}
-				<div className='border-[1px] border-[#333] rounded-[12px] h-fit md:h-[250px] p-[15px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
+				<div className='border-[1px] border-[#333] rounded-[12px] h-fit md:h-[250px] p-[10px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
 					{quests.map(
 						(quest, i) =>
 							i + 1 === currentQuest && (
 								<div key={i}>
-									<p className='text-[26px] px-[10px] bg-[#e9e9e9] rounded-[12px] w-fit'>
+									<p className='text-[18px] md:text-[26px] px-[10px] bg-[#e9e9e9] rounded-[12px] w-fit'>
 										{quest.title}
 									</p>
 									<div className='mt-[20px]'>

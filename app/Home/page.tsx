@@ -27,12 +27,12 @@ const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
 	}, [router])
 	return (
 		<Provider store={store}>
-			<div className='min-h-[100vh] mb-[30px]'>
+			<div className='flex flex-col justify-between h-[100vh]'>
 				<Header />
-				<div className='pt-[100px]'></div>
-				{children}
+				<div className='mt-[100px] mb-[30px]'>{children}</div>
+
+				<Footer />
 			</div>
-			<Footer />
 		</Provider>
 	)
 }
