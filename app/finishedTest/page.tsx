@@ -61,6 +61,7 @@ export default function FinishedTest() {
 						{tests.length > 1 ? (
 							<div className='w-[120px] sm:w-[250px] md:w-[400px] text-[14px] sm:text-[18px]'>
 								<Button
+									bg='bg-[#363636]'
 									title='Очистить'
 									onClick={() => {
 										setTests([])
