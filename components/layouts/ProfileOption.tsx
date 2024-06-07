@@ -36,7 +36,7 @@ export const ProfileOption = () => {
 	return (
 		<div className='relative pt-[40px]'>
 			<NawBar
-				classChild='w-[250px] mx-[5px] py-[10px] text-center border-[1px] border-transparent hover:border-white'
+				classChild='w-[250px] mx-[5px] py-[15px] text-center border-[1px] border-transparent hover:border-white'
 				classDad='flex-col'
 				nawLink={nawLink}
 			/>
