@@ -43,7 +43,7 @@ export const Header = () => {
 					<div ref={ref}>
 						<div
 							onClick={() => dispatch(showProfileOptions())}
-							className='flex items-center justify-center size-[52px] bg-white rounded-[50%] font-bold cursor-pointer hover:opacity-80 duration-300'
+							className='flex items-center justify-center size-[52px] bg-white rounded-[50%] font-bold cursor-pointer hover:opacity-80 duration-300 select-none'
 						>
 							АВА
 						</div>

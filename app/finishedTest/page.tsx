@@ -10,15 +10,14 @@ interface FinishedTest {
 }
 
 export default function FinishedTest() {
+	const storedTests = localStorage.getItem('finishedTests')
 	const [tests, setTests] = useState<FinishedTest[]>([])
 
 	useEffect(() => {
-		const storedTests = localStorage.getItem('finishedTests')
-
 		if (storedTests) {
 			setTests(JSON.parse(storedTests))
 		}
-	}, [])
+	}, [storedTests])
 
 	return (
 		<Container>
@@ -27,7 +26,7 @@ export default function FinishedTest() {
 					Завершенные тесты
 				</div>
 				<div className='flex flex-col items-center gap-[30px] w-full'>
-					{tests.length > 1 ? (
+					{tests.length >= 1 ? (
 						<div className='flex flex-col gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[10px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-full'>
 							{tests.map((test, i) => (
 								<div
