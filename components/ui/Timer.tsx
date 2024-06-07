@@ -31,11 +31,9 @@ export const Timer: React.FC<TimerProps> = ({ timerTime }) => {
 	}, [minutes, seconds])
 
 	return (
-		<div className='flex gap-[20px]'>
-			<div className='text-[32px] px-[20px] rounded-[8px] border-[2px] border-[#fa7a7a] w-fit text-[#131313c1] font-medium tracking-[10px]'>
-				<span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
-				<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-			</div>
+		<div className='text-[14px] md:text-[32px] px-[5px] md:px-[20px] rounded-[8px] border-[2px] border-[#fa7a7a] w-fit text-[#131313c1] font-medium tracking-[10px]'>
+			<span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
+			<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
 		</div>
 	)
 }

@@ -80,16 +80,16 @@ function NowTest() {
 	return (
 		<Container>
 			<div className='flex flex-col justify-center gap-[60px] px-[20px] xl:px-0'>
-				<div className='flex flex-col gap-[30px] md:flex-row md:gap-0 items-center justify-between'>
-					<div className='flex flex-col sm:flex-row items-center gap-[40px]'>
-						<div className='flex items-center gap-[25px]'>
-							<p className='text-[46px] font-[400]'>Тестирование</p>
-						</div>
+				<div className='flex flex-col gap-[10px] md:flex-row md:gap-0 items-center justify-between'>
+					<div className='flex items-center gap-[40px]'>
+						<p className='text-[26px] md:text-[46px] font-[400]'>
+							Тестирование
+						</p>
 						<Timer timerTime={time} />
 					</div>
-					<p className='text-[22px] font-[500] px-[10px] bg-[#f0f0f0] rounded-[8px] border-[1px] border-[#0000003c]'>{`Осталось попыток: ${attempt}`}</p>
+					<p className='text-[14px] md:text-[22px] font-[500] px-[10px] bg-[#f0f0f0] rounded-[8px] border-[1px] border-[#0000003c]'>{`Осталось попыток: ${attempt}`}</p>
 				</div>
-				<div className='flex flex-wrap gap-[20px] md:gap-[10px] w-full min-h-[100px]'>
+				<div className='flex flex-wrap gap-[10px] w-full min-h-[50px] md:min-h-[100px]'>
 					{questions.map((quest, i) => (
 						<div
 							onClick={() =>
@@ -99,13 +99,13 @@ function NowTest() {
 							}
 							className={`relative flex flex-col justify-center items-center duration-300 ease-out w-fit h-fit cursor-pointer ${
 								currentQuest === i + 1
-									? 'translate-y-[10px]'
+									? 'translate-y-[5px] md:translate-y-[10px]'
 									: 'translate-y-[0px]'
 							}`}
 							key={quest}
 						>
 							<div
-								className={`w-[80px] h-[15px] py-[5px] border-[1px] duration-300 ease-out transition-all rounded-[4px]  ${
+								className={`w-[50px] md:w-[80px] h-[15px] py-[5px] border-[1px] duration-300 ease-out transition-all rounded-[4px]  ${
 									currentQuest === i + 1
 										? 'bg-[#cd1c1c] border-[#cd1c1c]'
 										: currentQuest < i + 1
@@ -120,7 +120,7 @@ function NowTest() {
 				</div>
 
 				{/* Вопрос с ответами */}
-				<div className='border-[1px] border-[#333] rounded-[12px] h-fit md:h-[250px] p-[15px] bg-[#f3f3f3]'>
+				<div className='border-[1px] border-[#333] rounded-[12px] h-fit md:h-[250px] p-[15px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
 					{quests.map(
 						(quest, i) =>
 							i + 1 === currentQuest && (
@@ -144,7 +144,7 @@ function NowTest() {
 														}`}
 													></div>
 												</div>
-												<p className='text-[24px]'>{answer}</p>
+												<p className='text-[16px] md:text-[24px]'>{answer}</p>
 											</div>
 										))}
 									</div>
@@ -152,9 +152,9 @@ function NowTest() {
 							)
 					)}
 				</div>
-				<div className='flex justify-between w-full'>
-					<div className='flex'>
-						<div className={`w-[250px] duration-300 mr-[20px] `}>
+				<div className='flex flex-col md:flex-row gap-[20px] md:gap-0 md:justify-between w-full'>
+					<div className='flex gap-[20px] md:gap-0'>
+						<div className={`w-[150px] md:w-[250px] duration-300 mr-[20px] `}>
 							<Button
 								className={`${
 									Object.keys(selectedAnswers).length !== currentQuest
@@ -185,7 +185,7 @@ function NowTest() {
 								}}
 							/>
 						</div>
-						<div className={`w-[150px] duration-300 `}>
+						<div className={`w-[120px] md:w-[150px] duration-300 `}>
 							<Button
 								title='Очистить'
 								onClick={() => {
@@ -196,7 +196,7 @@ function NowTest() {
 							/>
 						</div>
 					</div>
-					<div className='w-[250px]'>
+					<div className='w-[200px]'>
 						<Button
 							title='Перезапустить'
 							bg='bg-[#383838]'

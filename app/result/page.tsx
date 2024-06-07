@@ -87,7 +87,7 @@ export default function FinishedTest() {
 					{`Оценка: ${scoresRef.current}`}
 				</p>
 			</div>
-			<div className='flex gap-[20px]'>
+			<div className='flex flex-wrap gap-[20px]'>
 				<Link href={'/'}>
 					<Button title='На главную' />
 				</Link>
