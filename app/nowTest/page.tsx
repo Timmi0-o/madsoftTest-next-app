@@ -77,8 +77,8 @@ function NowTest() {
 		localStorage.setItem('selectsAnswers', JSON.stringify(selectedAnswers))
 	}, [selectedAnswers])
 
-	function handleEnterKeyPress(event) {
-		if (event.keyCode === 13) {
+	function handleEnterKeyPress(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
 			if (
 				currentQuest === Number(numberQuestions) &&
 				Object.keys(selectedAnswers).length === currentQuest
@@ -91,6 +91,7 @@ function NowTest() {
 			}
 		}
 	}
+
 	document.addEventListener('keydown', handleEnterKeyPress)
 
 	return (
