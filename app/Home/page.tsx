@@ -19,9 +19,10 @@ const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
 		localStorage.setItem('testTime', '0')
 		localStorage.setItem('numberQuestions', '0')
 		localStorage.setItem('selectsAnswers', '0')
+		localStorage.setItem('correctAnswers', '0')
 	}
 	useEffect(() => {
-		if (router !== '/nowTest') {
+		if (router !== '/nowTest' && router !== '/result') {
 			clearLocalStorage()
 		}
 	}, [router])

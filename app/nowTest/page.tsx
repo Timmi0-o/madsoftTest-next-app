@@ -44,7 +44,10 @@ function NowTest() {
 		initialSelectedAnswers
 	)
 
-	const [correctAnswers, setCorrectAnswers] = useState(0)
+	const [correctAnswers, setCorrectAnswers] = useState(
+		Number(localStorage.getItem('correctAnswers')) || 0
+	)
+
 	console.log('correctAnswers', correctAnswers)
 
 	const selectAnswer = (
@@ -137,7 +140,7 @@ function NowTest() {
 				</div>
 
 				{/* Вопрос с ответами */}
-				<div className='border-[1px] border-[#333] rounded-[12px] h-fit md:h-[250px] p-[10px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
+				<div className='border-[1px] border-[#333] rounded-[12px] h-fit lg:h-[250px] p-[10px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
 					{quests.map(
 						(quest, i) =>
 							i + 1 === currentQuest && (
@@ -190,10 +193,8 @@ function NowTest() {
 									) {
 										window.location.href = '/result'
 										localStorage.setItem('completedQuest', numberQuestions)
-										localStorage.setItem(
-											'correctAnswers',
-											correctAnswers.toString()
-										)
+										localStorage.setItem(correctAnswers.toString())
+										console.log('correctAnswers', correctAnswers)
 									} else if (
 										Object.keys(selectedAnswers).length === currentQuest
 									) {
@@ -246,8 +247,6 @@ function progressTest(numberQuestions: number) {
 	for (let i = 0; i < Number(numberQuestions); i++) {
 		quest.push(i)
 	}
-	console.log('quest', quest)
-
 	return quest
 }
 
