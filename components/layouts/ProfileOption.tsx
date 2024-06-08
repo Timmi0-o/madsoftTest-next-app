@@ -24,7 +24,7 @@ export const ProfileOption = () => {
 			link: '/finishedTest',
 			modify: (
 				<div className='relative mr-[10px]'>
-					<AiFillBulb size={24} />
+					<AiFillBulb className='text-[#000]' size={24} />
 					<div className='absolute top-[-6px] right-[-6px] flex justify-center items-center size-[18px] rounded-[50%] bg-[#2374df]'>
 						<p className='text-[12px]'>{finishTest}</p>
 					</div>
@@ -36,7 +36,7 @@ export const ProfileOption = () => {
 	return (
 		<div className='relative pt-[40px]'>
 			<NawBar
-				classChild='w-[250px] mx-[5px] py-[15px] text-center border-[1px] border-transparent hover:border-white'
+				classChild='w-[250px] mx-[5px] py-[10px] text-center border-[1px] border-transparent hover:border-black'
 				classDad='flex-col'
 				nawLink={nawLink}
 			/>

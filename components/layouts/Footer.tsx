@@ -6,16 +6,19 @@ export const Footer = () => {
 	return (
 		<div
 			className={
-				'w-full bg-[#212529] shadow-[#787878] shadow-sm' + roboto.className
+				'w-full bg-[#F8F9FA] border-t-[1px] border-t-[#000000a3]' +
+				roboto.className
 			}
 		>
 			<Container>
 				<div className='flex items-center justify-center py-[30px]'>
 					<Link href={'/'}>
-						<p className='text-[46px] font-[700] text-center text-white'>
+						<p className='text-[46px] font-[700] text-center text-black'>
 							MadSoft
 						</p>
-						<p className='text-[#F8F9FA]'>Все права пока не защищены ©️ 2024</p>
+						<p className='text-[#000000ba]'>
+							Все права пока не защищены ©️ 2024
+						</p>
 					</Link>
 				</div>
 			</Container>

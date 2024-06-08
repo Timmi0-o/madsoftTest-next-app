@@ -15,16 +15,19 @@ export default function FinishedTest() {
 	const questRef = useRef<number[]>([])
 	const correctAnswersRef = useRef<number>(0)
 	const scoresRef = useRef<number>()
-	const isTestAdded = useRef<boolean>(false) // Используем useRef для отслеживания добавления теста
+	const isTestAdded = useRef<boolean>(false)
 
 	useEffect(() => {
+		// Массив из количества вопросов
 		const quest = progressTest(completedQuest)
 		questRef.current = quest
+
 		const correctAnswers = Number(localStorage.getItem('correctAnswers')) ?? 0
+		correctAnswersRef.current = correctAnswers
+
 		const storedTime = localStorage.getItem('totalSeconds')
 		const attempt = localStorage.getItem('attempt')
 
-		correctAnswersRef.current = correctAnswers
 		setLeftTime(storedTime)
 		setAttempts(attempt)
 
@@ -48,14 +51,14 @@ export default function FinishedTest() {
 				? JSON.parse(localStorage.getItem('finishedTests')!)
 				: []
 
-			// Получаем название теста из localStorage и добавляем его в массив
+			// Получаем название теста и добавляем его в массив
 			const titleTest = localStorage.getItem('titleTest')
 
 			if (titleTest) {
 				finishedTests.push({ title: titleTest, score: scoresRef.current })
 			}
 
-			// Сохраняем обновленный массив обратно в localStorage
+			// Сохраняем обновленный массив обратно
 			localStorage.setItem('finishedTests', JSON.stringify(finishedTests))
 
 			isTestAdded.current = true

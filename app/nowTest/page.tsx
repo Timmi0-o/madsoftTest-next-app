@@ -48,8 +48,6 @@ function NowTest() {
 		Number(localStorage.getItem('correctAnswers')) || 0
 	)
 
-	console.log('correctAnswers', correctAnswers)
-
 	const selectAnswer = (
 		questIndex: number,
 		answerIndex: number,
@@ -73,7 +71,6 @@ function NowTest() {
 				localStorage.setItem('correctAnswers', (correctAnswers - 1).toString())
 			}
 		}
-		console.log('correctAnswers', correctAnswers)
 	}
 
 	useEffect(() => {
@@ -193,7 +190,6 @@ function NowTest() {
 									) {
 										window.location.href = '/result'
 										localStorage.setItem('completedQuest', numberQuestions)
-										console.log('correctAnswers', correctAnswers)
 									} else if (
 										Object.keys(selectedAnswers).length === currentQuest
 									) {

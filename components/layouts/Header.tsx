@@ -29,23 +29,23 @@ export const Header = () => {
 	return (
 		<div
 			className={
-				'fixed w-full bg-[#212529] shadow-[#787878] shadow-sm z-[50] ' +
+				'fixed w-full bg-[#F8F9FA] shadow-[#e1e1e1a3] shadow-lg z-[50] ' +
 				roboto.className
 			}
 		>
 			<Container>
 				<div className='flex items-center justify-between w-full'>
 					<Link href={'/'}>
-						<p className='text-[46px] font-[700] text-center text-white'>
+						<p className='text-[46px] font-[700] text-center text-[#000000bd]'>
 							MadSoft
 						</p>
 					</Link>
 					<div ref={ref}>
 						<div
 							onClick={() => dispatch(showProfileOptions())}
-							className='flex items-center justify-center size-[52px] bg-white rounded-[50%] font-bold cursor-pointer hover:opacity-80 duration-300 select-none'
+							className='flex items-center justify-center size-[52px] rounded-[50%] border-[2px] border-[#000000d8] font-bold cursor-pointer hover:opacity-80 duration-300 select-none'
 						>
-							АВА
+							<p className='text-[#000000]'>АВА</p>
 						</div>
 						<div>
 							<Modal className='right-[0vh] top-[80px]' stateShow={profile}>
