@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { AiOutlineExpandAlt } from 'react-icons/ai'
 import { Button } from './Button'
+import { FlyingSquares } from './FlyingSquares/FlyingSquares'
 
 interface TestItemProps {
 	title: string
@@ -20,11 +21,14 @@ export const TestItem = ({
 	numberQuestions,
 }: TestItemProps) => {
 	const [isMore, setIsMore] = useState(false)
+	const [isItemHover, setIsItemHover] = useState(false)
 
 	return (
 		<>
 			<div
-				className={`relative flex flex-col items-center gap-[10px] lg-w-[300px] xl:w-[420px] h-fit p-[5px] border-[#00000034] border-[2px] rounded-[36px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
+				onMouseEnter={() => setIsItemHover(true)}
+				onMouseLeave={() => setIsItemHover(false)}
+				className={`relative flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[36px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
 					title === 'Математика'
 						? 'bg-[#6993ff]'
 						: title === 'Русский язык'
@@ -41,6 +45,14 @@ export const TestItem = ({
 				} `}
 			>
 				<div
+					className={`mr-[420px] duration-500 ${
+						isItemHover && isMore ? 'opacity-100' : 'opacity-0'
+					}`}
+				>
+					<FlyingSquares />
+				</div>
+
+				<div
 					onClick={() => {
 						setIsMore(!isMore)
 					}}
@@ -51,7 +63,7 @@ export const TestItem = ({
 				<div
 					className={`flex flex-col gap-[20px] p-[20px] transition-opacity duration-300`}
 				>
-					<p className='text-[32px] md:text-[46px] font-bold text-[#f4f4f4] px-[10px] text-center h-[150px] select-none'>
+					<p className='text-[32px] md:text-[46px] font-bold text-[#f4f4f4] px-[10px] text-center select-none'>
 						{title}
 					</p>
 					<div className='rounded-[12px] px-[10px] py-[5px] bg-[#ffffff] border-[1px] border-[#ffffff]'>
@@ -59,7 +71,7 @@ export const TestItem = ({
 					</div>
 				</div>
 				{isMore && (
-					<div className='w-full px-[20px] mb-[20px]'>
+					<div className='w-full px-[20px] mb-[20px] border-t-[2px] border-t-[#ededed]'>
 						<div className='flex flex-wrap gap-[20px] text-[16px] font-bold text-[#000000] my-[20px]'>
 							<div className='flex gap-[10px] items-center'>
 								<div className='size-[12px] rounded-[50%] bg-white'></div>
