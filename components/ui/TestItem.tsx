@@ -45,7 +45,7 @@ export const TestItem = ({
 				} `}
 			>
 				<div
-					className={`mr-[110%] duration-500 z-[0] ${
+					className={`mr-[100%] mt-[-20px] duration-500 z-[0] ${
 						isItemHover && isMore ? 'opacity-100' : 'opacity-0'
 					}`}
 				>
