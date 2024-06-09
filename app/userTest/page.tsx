@@ -6,7 +6,7 @@ export default function Test() {
 		<Container>
 			{subjects.map((subject, i) => (
 				<div className='mb-[30px]' key={i}>
-					<p className='text-[40px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[13px]'>
+					<p className='text-[40px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[13px] select-none'>
 						{subject}
 					</p>
 					<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>

@@ -24,7 +24,7 @@ export const TestItem = ({
 	return (
 		<>
 			<div
-				className={`relative flex flex-col items-center gap-[10px] lg-w-[300px] xl:w-[420px] min-h-[400px] p-[5px] border-[#00000034] border-[2px] rounded-[36px] duration-300 hover:shadow-xl pt-[30px] ${
+				className={`relative flex flex-col items-center gap-[10px] lg-w-[300px] xl:w-[420px] h-fit p-[5px] border-[#00000034] border-[2px] rounded-[36px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
 					title === 'Математика'
 						? 'bg-[#6993ff]'
 						: title === 'Русский язык'
@@ -60,10 +60,19 @@ export const TestItem = ({
 				</div>
 				{isMore && (
 					<div className='w-full px-[20px] mb-[20px]'>
-						<div className='flex flex-col gap-[15px] text-[22px] font-bold text-[#efefef] pl-[10px] border-l-[2px] border-l-[#151515] my-[20px]'>
-							<p>{`Время: ${time} минут`}</p>
-							<p>{`Попыток: ${attempt}`}</p>
-							<p>{`Вопросов: ${numberQuestions}`}</p>
+						<div className='flex flex-wrap gap-[20px] text-[16px] font-bold text-[#000000] my-[20px]'>
+							<div className='flex gap-[10px] items-center'>
+								<div className='size-[12px] rounded-[50%] bg-white'></div>
+								<p className='bg-[#fff] w-fit px-[10px] py-[5px] rounded-[8px]'>{`Время: ${time} минут`}</p>
+							</div>
+							<div className='flex gap-[10px] items-center'>
+								<div className='size-[12px] rounded-[50%] bg-white'></div>
+								<p className='bg-[#fff] w-fit px-[10px] py-[5px] rounded-[8px]'>{`Попыток: ${attempt}`}</p>
+							</div>
+							<div className='flex gap-[10px] items-center'>
+								<div className='size-[12px] rounded-[50%] bg-white'></div>
+								<p className='bg-[#fff] w-fit px-[10px] py-[5px] rounded-[8px]'>{`Вопросов: ${numberQuestions}`}</p>
+							</div>
 						</div>
 						<Link href={'/nowTest'}>
 							<Button
