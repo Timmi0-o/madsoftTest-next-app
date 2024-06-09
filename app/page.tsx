@@ -8,7 +8,7 @@ function Page() {
 	return (
 		<>
 			<Container>
-				<div className='flex flex-col items-center overflow-x-hidden'>
+				<div className='flex flex-col items-center'>
 					<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[13px] select-none'>
 						Ваши тесты
 					</p>

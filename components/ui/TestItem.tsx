@@ -44,7 +44,7 @@ export const TestItem = ({
 				className={`${itemCustom} w-[295px] lg-w-[350px] xl:w-[400px] ${
 					isMore
 						? 'h-[600px] xl:h-[500px] rounded-[16px] z-20 mt-[-100px] md:mt-[-100px] scale-[1.03]'
-						: 'h-[320px] md:h-[340px] xl:h-[270px] rounded-[26px]'
+						: 'h-[320px] md:h-[340px] xl:h-[290px] rounded-[26px]'
 				} ${
 					!isMore ? 'active:scale-[0.98]' : ''
 				} flex flex-col items-center p-[5px] border-[#00000034] border-[2px] hover:shadow-xl pt-[20px] duration-300 ${
@@ -65,7 +65,7 @@ export const TestItem = ({
 			>
 				<div
 					className={`mr-[100%] mt-[-20px] duration-500 z-[0] ${
-						isMore ? 'opacity-100' : 'opacity-0'
+						isMore ? 'block' : 'hidden'
 					}`}
 				>
 					<FlyingSquares />
