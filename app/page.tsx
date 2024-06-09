@@ -6,45 +6,47 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 function Page() {
 	return (
-		<Container>
-			<div className='flex flex-col items-center overflow-x-hidden'>
-				<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[13px] select-none'>
-					Ваши тесты
-				</p>
-				<div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
-					{items.map((item, i) => (
-						<div key={i}>
-							<TestItem
-								title={item.title}
-								time={item.time}
-								attempt={item.attempt}
-								description={item.description}
-								numberQuestions={item.numberQuestions}
-								id={i}
-							/>
-						</div>
-					))}
-				</div>
-				<div className='block sm:hidden absolute mt-[40px] w-[500px]'>
-					<Swiper spaceBetween={20} slidesPerView={1.5}>
+		<>
+			<Container>
+				<div className='flex flex-col items-center overflow-x-hidden'>
+					<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[13px] select-none'>
+						Ваши тесты
+					</p>
+					<div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
 						{items.map((item, i) => (
-							<SwiperSlide className='pt-[80px] pl-[20%] mb-[60px]' key={i}>
-								<div>
-									<TestItem
-										title={item.title}
-										time={item.time}
-										attempt={item.attempt}
-										description={item.description}
-										numberQuestions={item.numberQuestions}
-										id={i}
-									/>
-								</div>
-							</SwiperSlide>
+							<div key={i}>
+								<TestItem
+									title={item.title}
+									time={item.time}
+									attempt={item.attempt}
+									description={item.description}
+									numberQuestions={item.numberQuestions}
+									id={i}
+								/>
+							</div>
 						))}
-					</Swiper>
+					</div>
 				</div>
+			</Container>
+			<div className='block sm:hidden absolute w-full mt-[-80px]'>
+				<Swiper spaceBetween={0} slidesPerView={1.2}>
+					{items.map((item, i) => (
+						<SwiperSlide className='pt-[110px] mb-[60px] pl-[12%]' key={i}>
+							<div>
+								<TestItem
+									title={item.title}
+									time={item.time}
+									attempt={item.attempt}
+									description={item.description}
+									numberQuestions={item.numberQuestions}
+									id={i}
+								/>
+							</div>
+						</SwiperSlide>
+					))}
+				</Swiper>
 			</div>
-		</Container>
+		</>
 	)
 }
 

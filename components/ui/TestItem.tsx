@@ -41,9 +41,9 @@ export const TestItem = ({
 				onClick={() => {
 					setIsMore(!isMore)
 				}}
-				className={`${itemCustom} w-[300px] lg-w-[350px] xl:w-[400px] ${
+				className={`${itemCustom} w-[295px] lg-w-[350px] xl:w-[400px] ${
 					isMore
-						? 'h-[600px] xl:h-[500px] rounded-[16px] z-20 mt-[-70px] md:mt-[-100px] scale-[1.03]'
+						? 'h-[600px] xl:h-[500px] rounded-[16px] z-20 mt-[-100px] md:mt-[-100px] scale-[1.03]'
 						: 'h-[320px] md:h-[340px] xl:h-[270px] rounded-[26px]'
 				} ${
 					!isMore ? 'active:scale-[0.98]' : ''
