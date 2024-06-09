@@ -43,8 +43,8 @@ export const TestItem = ({
 				}}
 				className={`${itemCustom} w-[295px] lg-w-[350px] xl:w-[400px] ${
 					isMore
-						? 'h-[600px] xl:h-[500px] rounded-[16px] z-20 mt-[-100px] md:mt-[-100px] scale-[1.03]'
-						: 'h-[320px] md:h-[340px] xl:h-[290px] rounded-[26px]'
+						? 'h-[450px] xl:h-[500px] rounded-[16px] z-20 mt-[-100px] md:mt-[-100px] scale-[1.03]'
+						: 'h-[250px] md:h-[340px] xl:h-[290px] rounded-[26px]'
 				} ${
 					!isMore ? 'active:scale-[0.98]' : ''
 				} flex flex-col items-center p-[5px] border-[#00000034] border-[2px] hover:shadow-xl pt-[20px] duration-300 ${
@@ -80,10 +80,10 @@ export const TestItem = ({
 				</div>
 
 				<div
-					className={`flex flex-col gap-[20px] pt-[60px] md:pt-[40px] pb-[10px] px-[10px] transition-opacity duration-300 w-full`}
+					className={`flex flex-col pt-[60px] md:pt-[40px] px-[10px] transition-opacity duration-300 w-full`}
 				>
 					<p
-						className={`text-[24px] md:text-[36px] font-bold text-[#f4f4f4] px-[10px] text-center select-none md:h-[100px] xl:h-auto border-b-transparent border-b-[1px] ${
+						className={`text-[24px] md:text-[36px] font-bold text-[#f4f4f4] px-[10px] text-center select-none md:h-[100px] xl:h-auto border-b-transparent border-b-[1px] mt-[-30px] ${
 							isMore ? 'pb-[10px] border-b-[#fff]' : ''
 						} duration-300`}
 					>
@@ -94,7 +94,7 @@ export const TestItem = ({
 							isMore ? 'mt-0' : 'mt-[50px]'
 						}`}
 					>
-						<p className='text-[#000000] select-none tracking-[0.7px]'>{`${
+						<p className='text-[#000000] select-none tracking-[0.7px] text-[14px]'>{`${
 							isMore ? description : `${description.slice(0, 70)}...`
 						}`}</p>
 					</div>
@@ -103,7 +103,7 @@ export const TestItem = ({
 					<div
 						className={`flex flex-col justify-between w-full h-full px-[20px] my-[20px] border-t-[2px] border-t-[#ededed] z-10`}
 					>
-						<div className='flex flex-wrap gap-[20px] text-[16px] font-bold text-[#000000] my-[20px]'>
+						<div className='flex flex-wrap gap-[10px] text-[12px] font-bold text-[#000000] my-[20px]'>
 							<div className='flex gap-[10px] items-center'>
 								<div className='size-[12px] rounded-[50%] bg-white'></div>
 								<p className='bg-[#fff] w-fit px-[10px] py-[5px] rounded-[8px]'>{`Время: ${time} минут`}</p>
