@@ -138,7 +138,7 @@ function NowTest() {
 
 				{/* Вопрос с ответами */}
 				<div className='flex h-[270px]'>
-					<div className='border-[1px] border-[#333] rounded-[12px] h-fit lg:h-[250px] p-[10px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
+					<div className='border-[1px] w-full border-[#333] rounded-[12px] h-fit lg:h-[250px] p-[10px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
 						{quests.map(
 							(quest, i) =>
 								i + 1 === currentQuest && (
