@@ -17,6 +17,7 @@ function Page() {
 								attempt={item.attempt}
 								description={item.description}
 								numberQuestions={item.numberQuestions}
+								id={i}
 							/>
 						</div>
 					))}

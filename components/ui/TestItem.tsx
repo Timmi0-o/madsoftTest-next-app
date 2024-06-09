@@ -11,6 +11,7 @@ interface TestItemProps {
 	attempt: string
 	description: string
 	numberQuestions: number
+	id: number
 }
 
 export const TestItem = ({
@@ -19,6 +20,7 @@ export const TestItem = ({
 	attempt,
 	description,
 	numberQuestions,
+	id,
 }: TestItemProps) => {
 	const [isMore, setIsMore] = useState(false)
 	const [isItemHover, setIsItemHover] = useState(false)
@@ -31,7 +33,11 @@ export const TestItem = ({
 				}}
 				onMouseEnter={() => setIsItemHover(true)}
 				onMouseLeave={() => setIsItemHover(false)}
-				className={`relative w-[300px] lg-w-[350px] xl:w-[400px] flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[26px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
+				className={`relative w-[300px] lg-w-[350px] xl:w-[400px] ${
+					isMore ? 'h-[600px] md:h-[500px]' : 'h-[290px] md:h-[270px]'
+				} ${
+					!isMore ? 'active:scale-[0.98]' : ''
+				} flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[26px] hover:shadow-xl pt-[20px] duration-300 ${
 					title === 'Математика'
 						? 'bg-[#6993ff]'
 						: title === 'Русский язык'
@@ -64,17 +70,25 @@ export const TestItem = ({
 				</div>
 
 				<div
-					className={`flex flex-col gap-[20px] pt-[30px] pb-[10px] px-[10px] transition-opacity duration-300`}
+					className={`flex flex-col gap-[20px] pt-[60px] md:pt-[40px] pb-[10px] px-[10px] transition-opacity duration-300 w-full`}
 				>
-					<p className='text-[32px] md:text-[40px] font-bold text-[#f4f4f4] px-[10px] text-center select-none'>
+					<p className='text-[24px] md:text-[36px] font-bold text-[#f4f4f4] px-[10px] text-center select-none'>
 						{title}
 					</p>
-					<div className='rounded-[12px] px-[10px] py-[5px] bg-[#ffffff] border-[1px] border-[#ffffff]'>
-						<p className='text-[#000000] select-none text-justify tracking-[0.7px]'>{`${description}`}</p>
+					<div
+						className={`rounded-[12px] px-[10px] py-[5px] bg-[#ffffff] border-[1px] border-[#ffffff] duration-300 ${
+							isMore ? 'mt-0' : 'mt-[50px]'
+						}`}
+					>
+						<p className='text-[#000000] select-none tracking-[0.7px]'>{`${
+							isMore ? description : `${description.slice(0, 70)}...`
+						}`}</p>
 					</div>
 				</div>
 				{isMore && (
-					<div className='w-full px-[20px] my-[20px] border-t-[2px] border-t-[#ededed] z-10'>
+					<div
+						className={`flex flex-col justify-between w-full h-full px-[20px] my-[20px] border-t-[2px] border-t-[#ededed] z-10`}
+					>
 						<div className='flex flex-wrap gap-[20px] text-[16px] font-bold text-[#000000] my-[20px]'>
 							<div className='flex gap-[10px] items-center'>
 								<div className='size-[12px] rounded-[50%] bg-white'></div>
@@ -92,7 +106,7 @@ export const TestItem = ({
 						<Link href={'/nowTest'}>
 							<Button
 								bg='bg-transparent'
-								className='text-[#000000c0] border-[1px] border-[#000000d5] hover:bg-[#ffffff] hover:text-[#000000] hover:border-[#ffffffd5] rounded-[4px]'
+								className='text-[#000000c0] border-[1px] border-[#000000d5] active:bg-[#ffffff] md:hover:bg-[#ffffff] hover:text-[#000000] hover:border-[#ffffffd5] rounded-[4px]'
 								onClick={() => {
 									localStorage.setItem(
 										'testTime',
