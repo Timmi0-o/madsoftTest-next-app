@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineExpandAlt } from 'react-icons/ai'
 import { Button } from './Button'
 import { FlyingSquares } from './FlyingSquares/FlyingSquares'
@@ -23,7 +23,17 @@ export const TestItem = ({
 	id,
 }: TestItemProps) => {
 	const [isMore, setIsMore] = useState(false)
-	const [isItemHover, setIsItemHover] = useState(false)
+	const [itemCustom, setItemCustom] = useState('relative')
+
+	useEffect(() => {
+		if (isMore) {
+			setItemCustom('relative md:absolute')
+		} else {
+			setTimeout(() => {
+				setItemCustom('relative')
+			}, 300)
+		}
+	}, [isMore])
 
 	return (
 		<>
@@ -31,13 +41,13 @@ export const TestItem = ({
 				onClick={() => {
 					setIsMore(!isMore)
 				}}
-				onMouseEnter={() => setIsItemHover(true)}
-				onMouseLeave={() => setIsItemHover(false)}
-				className={`relative w-[300px] lg-w-[350px] xl:w-[400px] ${
-					isMore ? 'h-[600px] md:h-[500px]' : 'h-[290px] md:h-[270px]'
+				className={`${itemCustom} w-[300px] lg-w-[350px] xl:w-[400px] ${
+					isMore
+						? 'h-[600px] lg:h-[500px] rounded-[16px] z-20 mt-[-50px] md:mt-[-100px] scale-[1.07]'
+						: 'h-[320px] md:h-[340px] xl:h-[270px] rounded-[26px]'
 				} ${
 					!isMore ? 'active:scale-[0.98]' : ''
-				} flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[26px] hover:shadow-xl pt-[20px] duration-300 ${
+				} flex flex-col items-center p-[5px] border-[#00000034] border-[2px] hover:shadow-xl pt-[20px] duration-300 ${
 					title === 'Математика'
 						? 'bg-[#6993ff]'
 						: title === 'Русский язык'
@@ -55,7 +65,7 @@ export const TestItem = ({
 			>
 				<div
 					className={`mr-[100%] mt-[-20px] duration-500 z-[0] ${
-						isItemHover && isMore ? 'opacity-100' : 'opacity-0'
+						isMore ? 'opacity-100' : 'opacity-0'
 					}`}
 				>
 					<FlyingSquares />
@@ -66,13 +76,17 @@ export const TestItem = ({
 						setIsMore(!isMore)
 					}}
 				>
-					<AiOutlineExpandAlt className='absolute top-[20px] right-[20px] size-[32px] text-[#000000dc] cursor-pointer duration-300 active:scale-[0.9]' />
+					<AiOutlineExpandAlt className='absolute top-[20px] right-[20px] size-[32px] text-[#000000dc] cursor-pointer duration-300 active:scale-[0.8]' />
 				</div>
 
 				<div
 					className={`flex flex-col gap-[20px] pt-[60px] md:pt-[40px] pb-[10px] px-[10px] transition-opacity duration-300 w-full`}
 				>
-					<p className='text-[24px] md:text-[36px] font-bold text-[#f4f4f4] px-[10px] text-center select-none'>
+					<p
+						className={`text-[24px] md:text-[36px] font-bold text-[#f4f4f4] px-[10px] text-center select-none md:h-[100px] xl:h-auto border-b-transparent border-b-[1px] ${
+							isMore ? 'pb-[10px] border-b-[#fff]' : ''
+						} duration-300`}
+					>
 						{title}
 					</p>
 					<div

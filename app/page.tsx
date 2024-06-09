@@ -1,3 +1,4 @@
+'use client'
 import { Container } from '@/components/ui/Container'
 import { TestItem } from '@/components/ui/TestItem'
 
