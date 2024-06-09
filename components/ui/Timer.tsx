@@ -31,7 +31,7 @@ export const Timer: React.FC<TimerProps> = ({ timerTime }) => {
 	}, [minutes, seconds])
 
 	return (
-		<div className='text-[14px] md:text-[32px] px-[5px] md:px-[20px] rounded-[8px] border-[2px] border-[#fa7a7a] w-fit text-[#131313c1] font-medium tracking-[10px]'>
+		<div className='text-[15px] md:text-[32px] px-[3px] md:px-[20px] rounded-[8px] border-[2px] border-[#fa7a7a] text-[#131313c1] font-medium tracking-[8px]'>
 			<span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
 			<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
 		</div>

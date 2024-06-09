@@ -28,7 +28,7 @@ export const TestItem = ({
 			<div
 				onMouseEnter={() => setIsItemHover(true)}
 				onMouseLeave={() => setIsItemHover(false)}
-				className={`relative w-[300px] lg-w-[350px] xl:w-[400px] flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[36px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
+				className={`relative w-[300px] lg-w-[350px] xl:w-[400px] flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[26px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
 					title === 'Математика'
 						? 'bg-[#6993ff]'
 						: title === 'Русский язык'
@@ -61,17 +61,17 @@ export const TestItem = ({
 				</div>
 
 				<div
-					className={`flex flex-col gap-[20px] p-[20px] transition-opacity duration-300`}
+					className={`flex flex-col gap-[20px] pt-[30px] pb-[10px] px-[10px] transition-opacity duration-300`}
 				>
-					<p className='text-[32px] md:text-[46px] font-bold text-[#f4f4f4] px-[10px] text-center select-none'>
+					<p className='text-[32px] md:text-[40px] font-bold text-[#f4f4f4] px-[10px] text-center select-none'>
 						{title}
 					</p>
 					<div className='rounded-[12px] px-[10px] py-[5px] bg-[#ffffff] border-[1px] border-[#ffffff]'>
-						<p className='text-[#000000] font-medium select-none'>{`${description}`}</p>
+						<p className='text-[#000000] select-none text-justify tracking-[0.7px]'>{`${description}`}</p>
 					</div>
 				</div>
 				{isMore && (
-					<div className='w-full px-[20px] mb-[20px] border-t-[2px] border-t-[#ededed] z-10'>
+					<div className='w-full px-[20px] my-[20px] border-t-[2px] border-t-[#ededed] z-10'>
 						<div className='flex flex-wrap gap-[20px] text-[16px] font-bold text-[#000000] my-[20px]'>
 							<div className='flex gap-[10px] items-center'>
 								<div className='size-[12px] rounded-[50%] bg-white'></div>

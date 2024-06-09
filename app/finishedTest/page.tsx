@@ -21,20 +21,24 @@ export default function FinishedTest() {
 
 	return (
 		<Container>
-			<div className='flex flex-col items-center justify-between w-full gap-[80px]'>
+			<div className='flex flex-col items-center justify-between w-full gap-[30px]'>
 				<div className='text-[32px] md:text-[60px] font-medium'>
 					Завершенные тесты
 				</div>
 				<div className='flex flex-col items-center gap-[30px] w-full'>
 					{tests.length >= 1 ? (
-						<div className='flex flex-col gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[10px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-full'>
+						<div className='flex flex-col gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[20px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-fit'>
 							{tests.map((test, i) => (
 								<div
 									key={i}
-									className='flex items-center justify-between gap-[10px] bg-[#fff] px-[5px] rounded-[8px] py-[4px]'
+									className='relative flex items-center justify-between gap-[10px] bg-[#fff] px-[5px] rounded-[8px] py-[4px]'
 								>
-									<p className='text-[22px] md:text-[30px]'>{`${i + 1})`}</p>
-									<p className='text-[22px] md:text-[30px]'>{test.title}</p>
+									<p className='absolute text-[10px] top-0 text-[#00000028] md:text-[18px]'>{`${
+										i + 1
+									}`}</p>
+									<p className='text-[22px] md:text-[30px] pl-[20px]'>
+										{test.title}
+									</p>
 									<div className='flex gap-[5px] text-[22px] md:text-[30px]'>
 										<p className='px-[5px]'>Оценка:</p>
 										<p

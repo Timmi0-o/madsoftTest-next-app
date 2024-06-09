@@ -96,7 +96,7 @@ function NowTest() {
 
 	return (
 		<Container>
-			<div className='flex flex-col justify-center gap-[60px] px-[5px] xl:px-0'>
+			<div className='flex flex-col justify-center gap-[40px] px-[5px] xl:px-0'>
 				<div className='flex flex-col gap-[10px] md:flex-row md:gap-0 items-center justify-between'>
 					<div className='flex items-center gap-[40px]'>
 						<p className='text-[26px] md:text-[46px] font-[400]'>
@@ -104,9 +104,9 @@ function NowTest() {
 						</p>
 						<Timer timerTime={time} />
 					</div>
-					<p className='text-[14px] md:text-[22px] font-[500] px-[10px] bg-[#f0f0f0] rounded-[8px] border-[1px] border-[#0000003c]'>{`Осталось попыток: ${attempt}`}</p>
+					<p className='text-[14px] md:text-[22px] font-[500] px-[10px] py-[5px] bg-[#f5f5f5] rounded-[8px] border-[1px] border-[#d4d4d48f]'>{`Осталось попыток: ${attempt}`}</p>
 				</div>
-				<div className='flex flex-wrap gap-[10px] w-full min-h-[50px] md:min-h-[100px]'>
+				<div className='flex flex-wrap gap-[10px] w-full min-h-[30px] md:min-h-[100px]'>
 					{questions.map((quest, i) => (
 						<div
 							onClick={() =>
@@ -122,7 +122,7 @@ function NowTest() {
 							key={quest}
 						>
 							<div
-								className={`w-[50px] md:w-[80px] h-[15px] py-[5px] border-[1px] duration-300 ease-out transition-all rounded-[4px]  ${
+								className={`w-[25px] md:w-[80px] h-[10px] md:h-[15px] py-[5px] border-[1px] duration-300 ease-out transition-all rounded-[4px]  ${
 									currentQuest === i + 1
 										? 'bg-[#cd1c1c] border-[#cd1c1c]'
 										: currentQuest < i + 1
@@ -137,39 +137,41 @@ function NowTest() {
 				</div>
 
 				{/* Вопрос с ответами */}
-				<div className='border-[1px] border-[#333] rounded-[12px] h-fit lg:h-[250px] p-[10px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
-					{quests.map(
-						(quest, i) =>
-							i + 1 === currentQuest && (
-								<div key={i}>
-									<p className='text-[18px] md:text-[26px] px-[10px] bg-[#e9e9e9] rounded-[12px] w-fit'>
-										{quest.title}
-									</p>
-									<div className='mt-[20px]'>
-										{quest.answer.map((answer, j) => (
-											<div
-												onClick={() => selectAnswer(i, j, quest.rightAnswer)}
-												className='flex items-center gap-[10px] cursor-pointer mb-[10px]'
-												key={j}
-											>
-												<div className='flex justify-center items-center size-[24px]'>
-													<div
-														className={`border-[1px] duration-300 transition-all  border-black rounded-[4px] ${
-															selectedAnswers[i] === j
-																? 'bg-black size-[22px]'
-																: 'bg-transparent size-[24px] '
-														}`}
-													></div>
+				<div className='flex h-[270px]'>
+					<div className='border-[1px] border-[#333] rounded-[12px] h-fit lg:h-[250px] p-[10px] bg-[#f3f3f3] mt-[-25px] md:mt-0'>
+						{quests.map(
+							(quest, i) =>
+								i + 1 === currentQuest && (
+									<div key={i}>
+										<p className='text-[18px] md:text-[26px] px-[10px] bg-[#e9e9e9] rounded-[12px] w-fit'>
+											{quest.title}
+										</p>
+										<div className='mt-[20px]'>
+											{quest.answer.map((answer, j) => (
+												<div
+													onClick={() => selectAnswer(i, j, quest.rightAnswer)}
+													className='flex items-center gap-[10px] cursor-pointer mb-[10px]'
+													key={j}
+												>
+													<div className='flex justify-center items-center size-[24px]'>
+														<div
+															className={`border-[1px] duration-300 transition-all  border-black rounded-[4px] ${
+																selectedAnswers[i] === j
+																	? 'bg-black size-[22px]'
+																	: 'bg-transparent size-[24px] '
+															}`}
+														></div>
+													</div>
+													<p className='text-[16px] md:text-[24px]'>{answer}</p>
 												</div>
-												<p className='text-[16px] md:text-[24px]'>{answer}</p>
-											</div>
-										))}
+											))}
+										</div>
 									</div>
-								</div>
-							)
-					)}
+								)
+						)}
+					</div>
 				</div>
-				<div className='flex flex-col md:flex-row gap-[20px] md:gap-0 md:justify-between w-full'>
+				<div className='flex flex-col justify-end md:flex-row gap-[20px] md:gap-0 md:justify-between w-full'>
 					<div className='flex gap-[20px] md:gap-0'>
 						<div className={`w-[150px] md:w-[250px] duration-300 mr-[20px] `}>
 							<Button
