@@ -1,5 +1,6 @@
 'use client'
 import { Button } from '@/components/ui/Button'
+import { Container } from '@/components/ui/Container'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
@@ -67,47 +68,51 @@ export default function FinishedTest() {
 	}, [completedQuest])
 
 	return (
-		<div className='flex flex-col items-center w-full'>
-			<p className='text-[40px] md:text-[60px]'>Тест закончен</p>
-			<div className='my-[20px]'>
-				{questRef.current.map((i) => (
-					<p
-						className='text-[18px] md:text-[26px] px-[10px] bg-[#f0f0f0] my-[20px] rounded-[8px]'
-						key={i}
-					>{`Ответ на вопрос ${i + 1} записан`}</p>
-				))}
-			</div>
-			<div className='flex flex-col items-center'>
-				<p className='text-[26px] px-[10px] bg-[#e3e3e3] py-[5px] my-[20px] rounded-[8px] w-fit'>{`${
-					correctAnswersRef.current
-				}/${completedQuest} (${
-					Math.floor((correctAnswersRef.current / completedQuest) * 100) === 0
-						? '0'
-						: Math.floor((correctAnswersRef.current / completedQuest) * 100)
-				})`}</p>
-				<p className='text-[42px] px-[5px] bg-[#e3e3e3] my-[40px] rounded-[8px] text-center w-fit'>
-					{`Оценка: ${scoresRef.current}`}
-				</p>
-			</div>
-			<div className='flex justify-center flex-wrap gap-[20px]'>
-				<Link href={'/'}>
-					<Button title='На главную' />
-				</Link>
-				<Link href={'/finishedTest'}>
-					<Button
-						onClick={() => localStorage.setItem('completedQuest', '0')}
-						title='Пройденные тесты'
-					/>
-				</Link>
-				{Number(leftTime) >= 2 && Number(attempts) >= 1 ? (
-					<Link href={'/nowTest'}>
-						<Button title='Вернуться к тесту' />
+		<Container>
+			<div className='flex flex-col items-center w-full'>
+				<p className='text-[40px] md:text-[60px]'>Тест закончен</p>
+				<div className='mt-[30px] border-[1px] border-[#000] rounded-[12px] px-[20px] w-full'>
+					{questRef.current.map((i) => (
+						<p
+							className='text-[18px] md:text-[26px] px-[10px] bg-[#f0f0f0] my-[20px] rounded-[8px]'
+							key={i}
+						>{`Ответ на вопрос ${i + 1} записан`}</p>
+					))}
+				</div>
+				<div className='flex gap-[20px] items-center'>
+					<p className='text-[26px] px-[10px] bg-[#e3e3e3] py-[5px] my-[20px] rounded-[8px] w-fit'>{`${
+						correctAnswersRef.current
+					}/${completedQuest} (${
+						Math.floor((correctAnswersRef.current / completedQuest) * 100) === 0
+							? '0'
+							: Math.floor((correctAnswersRef.current / completedQuest) * 100)
+					})`}</p>
+					<p className='text-[26px] px-[10px] py-[5px] bg-[#e3e3e3] my-[40px] rounded-[8px] text-center w-fit'>
+						{`Оценка: ${scoresRef.current}`}
+					</p>
+				</div>
+				<div className='flex justify-center flex-wrap gap-[20px]'>
+					<Link href={'/'}>
+						<Button title='На главную' />
 					</Link>
-				) : (
-					''
-				)}
+					<Link href={'/finishedTest'}>
+						<Button
+							className='border-[1px] border-[#000] text-black'
+							bg='bg-transparent'
+							onClick={() => localStorage.setItem('completedQuest', '0')}
+							title='Пройденные тесты'
+						/>
+					</Link>
+					{Number(leftTime) >= 2 && Number(attempts) >= 1 ? (
+						<Link href={'/nowTest'}>
+							<Button bg='bg-[#3993f9]' title='Вернуться к тесту' />
+						</Link>
+					) : (
+						''
+					)}
+				</div>
 			</div>
-		</div>
+		</Container>
 	)
 }
 

@@ -27,7 +27,7 @@ export default function FinishedTest() {
 				</div>
 				<div className='flex flex-col items-center gap-[30px] w-full'>
 					{tests.length >= 1 ? (
-						<div className='flex flex-col gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[20px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-fit'>
+						<div className='grid grid-cols-2 gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[20px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-fit'>
 							{tests.map((test, i) => (
 								<div
 									key={i}
@@ -36,11 +36,13 @@ export default function FinishedTest() {
 									<p className='absolute text-[10px] top-0 text-[#00000028] md:text-[18px]'>{`${
 										i + 1
 									}`}</p>
-									<p className='text-[22px] md:text-[30px] pl-[20px]'>
+									<p className='text-[12px] sm:text-[16px] md:text-[22px] lg:text-[32px] pl-[14px] sm:pl-[24px]'>
 										{test.title}
 									</p>
-									<div className='flex gap-[5px] text-[22px] md:text-[30px]'>
-										<p className='px-[5px]'>Оценка:</p>
+									<div className='flex gap-[5px] text-[14px] sm:text-[16px] md:text-[30px]'>
+										{/* <p className='px-[5px] text-[14px] sm:text-[16px] md:text-[30px]'>
+											Оценка:
+										</p> */}
 										<p
 											className={`${
 												test.score === 5
@@ -61,7 +63,7 @@ export default function FinishedTest() {
 					) : (
 						''
 					)}
-					<div className='flex gap-[20px]'>
+					<div className='flex gap-[20px] mx-[10px]'>
 						{tests.length > 1 ? (
 							<div className='w-[120px] sm:w-[250px] md:w-[400px] text-[14px] sm:text-[18px]'>
 								<Button
