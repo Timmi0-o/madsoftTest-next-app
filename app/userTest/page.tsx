@@ -4,29 +4,31 @@ import { TestItem } from '@/components/ui/TestItem'
 export default function Test() {
 	return (
 		<Container>
-			{subjects.map((subject, i) => (
-				<div className='mb-[30px]' key={i}>
-					<p className='text-[40px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[13px] select-none'>
-						{subject}
-					</p>
-					<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
-						{items.map(
-							(item, i) =>
-								subject === item.title && (
-									<div key={i}>
-										<TestItem
-											title={item.title}
-											time={item.time}
-											attempt={item.attempt}
-											description={item.description}
-											numberQuestions={items.length}
-										/>
-									</div>
-								)
-						)}
+			<div className=' overflow-x-hidden'>
+				{subjects.map((subject, i) => (
+					<div className='flex flex-col items-center mb-[30px]' key={i}>
+						<p className='text-[28px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[13px] select-none'>
+							{subject}
+						</p>
+						<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
+							{items.map(
+								(item, i) =>
+									subject === item.title && (
+										<div key={i}>
+											<TestItem
+												title={item.title}
+												time={item.time}
+												attempt={item.attempt}
+												description={item.description}
+												numberQuestions={items.length}
+											/>
+										</div>
+									)
+							)}
+						</div>
 					</div>
-				</div>
-			))}
+				))}
+			</div>
 		</Container>
 	)
 }

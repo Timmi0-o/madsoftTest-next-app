@@ -28,7 +28,7 @@ export const TestItem = ({
 			<div
 				onMouseEnter={() => setIsItemHover(true)}
 				onMouseLeave={() => setIsItemHover(false)}
-				className={`relative flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[36px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
+				className={`relative w-[300px] lg-w-[350px] xl:w-[400px] flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[36px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
 					title === 'Математика'
 						? 'bg-[#6993ff]'
 						: title === 'Русский язык'
@@ -45,7 +45,7 @@ export const TestItem = ({
 				} `}
 			>
 				<div
-					className={`mr-[420px] duration-500 ${
+					className={`mr-[110%] duration-500 z-[0] ${
 						isItemHover && isMore ? 'opacity-100' : 'opacity-0'
 					}`}
 				>
@@ -71,7 +71,7 @@ export const TestItem = ({
 					</div>
 				</div>
 				{isMore && (
-					<div className='w-full px-[20px] mb-[20px] border-t-[2px] border-t-[#ededed]'>
+					<div className='w-full px-[20px] mb-[20px] border-t-[2px] border-t-[#ededed] z-10'>
 						<div className='flex flex-wrap gap-[20px] text-[16px] font-bold text-[#000000] my-[20px]'>
 							<div className='flex gap-[10px] items-center'>
 								<div className='size-[12px] rounded-[50%] bg-white'></div>

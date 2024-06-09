@@ -4,8 +4,8 @@ import { TestItem } from '@/components/ui/TestItem'
 function Page() {
 	return (
 		<Container>
-			<>
-				<p className='text-[40px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[13px] select-none'>
+			<div className='flex flex-col items-center'>
+				<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[13px] select-none'>
 					Ваши тесты
 				</p>
 				<div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
@@ -21,7 +21,7 @@ function Page() {
 						</div>
 					))}
 				</div>
-			</>
+			</div>
 		</Container>
 	)
 }
