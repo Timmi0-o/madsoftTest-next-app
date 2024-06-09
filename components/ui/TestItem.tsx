@@ -26,6 +26,9 @@ export const TestItem = ({
 	return (
 		<>
 			<div
+				onClick={() => {
+					setIsMore(!isMore)
+				}}
 				onMouseEnter={() => setIsItemHover(true)}
 				onMouseLeave={() => setIsItemHover(false)}
 				className={`relative w-[300px] lg-w-[350px] xl:w-[400px] flex flex-col items-center p-[5px] border-[#00000034] border-[2px] rounded-[26px] hover:shadow-xl pt-[20px] transition-all duration-300 ease-linear ${
