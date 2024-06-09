@@ -71,7 +71,7 @@ export default function FinishedTest() {
 		<Container>
 			<div className='flex flex-col items-center w-full'>
 				<p className='text-[40px] md:text-[60px]'>Тест закончен</p>
-				<div className='mt-[30px] border-[1px] border-[#000] rounded-[12px] px-[20px] w-full'>
+				<div className='mt-[30px] border-[1px] border-[#000] rounded-[12px] px-[20px] w-full max-h-[290px] md:max-h-[600px] overflow-x-auto'>
 					{questRef.current.map((i) => (
 						<p
 							className='text-[18px] md:text-[26px] px-[10px] bg-[#f0f0f0] my-[20px] rounded-[8px]'
