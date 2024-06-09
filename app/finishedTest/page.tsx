@@ -25,9 +25,13 @@ export default function FinishedTest() {
 				<div className='text-[32px] md:text-[60px] font-medium'>
 					Завершенные тесты
 				</div>
-				<div className='flex flex-col items-center gap-[30px] w-full'>
+				<div className='flex flex-col justify-between items-center gap-[30px] w-full min-h-[500px]'>
 					{tests.length >= 1 ? (
-						<div className='grid grid-cols-2 gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[20px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-fit'>
+						<div
+							className={`grid ${
+								tests.length > 1 ? 'grid-cols-2' : 'grid-cols-1'
+							} gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[20px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-fit`}
+						>
 							{tests.map((test, i) => (
 								<div
 									key={i}
@@ -40,9 +44,6 @@ export default function FinishedTest() {
 										{test.title}
 									</p>
 									<div className='flex gap-[5px] text-[14px] sm:text-[16px] md:text-[30px]'>
-										{/* <p className='px-[5px] text-[14px] sm:text-[16px] md:text-[30px]'>
-											Оценка:
-										</p> */}
 										<p
 											className={`${
 												test.score === 5
