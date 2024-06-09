@@ -1,6 +1,8 @@
 'use client'
 import { Container } from '@/components/ui/Container'
 import { TestItem } from '@/components/ui/TestItem'
+import 'swiper/css'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 function Page() {
 	return (
@@ -9,7 +11,7 @@ function Page() {
 				<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[13px] select-none'>
 					Ваши тесты
 				</p>
-				<div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
+				<div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
 					{items.map((item, i) => (
 						<div key={i}>
 							<TestItem
@@ -22,6 +24,24 @@ function Page() {
 							/>
 						</div>
 					))}
+				</div>
+				<div className='block sm:hidden absolute mt-[40px] w-[500px]'>
+					<Swiper spaceBetween={20} slidesPerView={1.5}>
+						{items.map((item, i) => (
+							<SwiperSlide className='pt-[80px] pl-[20%] mb-[60px]' key={i}>
+								<div>
+									<TestItem
+										title={item.title}
+										time={item.time}
+										attempt={item.attempt}
+										description={item.description}
+										numberQuestions={item.numberQuestions}
+										id={i}
+									/>
+								</div>
+							</SwiperSlide>
+						))}
+					</Swiper>
 				</div>
 			</div>
 		</Container>
