@@ -43,11 +43,13 @@ export const TestItem = ({
 				}}
 				className={`relative w-[255px] lg-w-[300px] xl:w-[350px] ${
 					isMore
-						? 'h-[480px] xl:h-[500px] rounded-[16px] z-20 translate-y-[-60px]  md:translate-y-[-40px]'
+						? 'h-[480px] md:h-[550px] xl:h-[500px] rounded-[16px] z-20 translate-y-[-60px]  md:translate-y-[-40px]'
 						: 'h-[200px] md:h-[340px] xl:h-[290px] rounded-[26px]'
 				} ${
-					!isMore ? 'active:scale-[0.98]' : ''
-				} flex flex-col items-center p-[5px] border-[#00000034] border-[2px] hover:shadow-xl pt-[20px] duration-300 ${
+					!isMore
+						? 'active:scale-[0.98] border-[#ffffff34]'
+						: 'border-[#0000009d]'
+				} flex flex-col items-center p-[5px] border-[1px] hover:shadow-xl pt-[20px] duration-300 ${
 					title === 'Математика'
 						? 'bg-[#6993ff]'
 						: title === 'Русский язык'
@@ -82,7 +84,7 @@ export const TestItem = ({
 				<div className={`flex flex-col md:pt-[60px] px-[10px] w-full`}>
 					<p
 						className={`text-[24px] md:text-[36px] font-bold text-[#f4f4f4] px-[10px] text-center select-none md:h-[100px] xl:h-auto border-b-transparent border-b-[1px] ${
-							isMore ? 'py-[10px] border-b-[#fff]' : 'mb-[-20px]'
+							isMore ? 'py-[10px] border-b-[#fff] md:mt-[-20px]' : 'mb-[-20px]'
 						} duration-300`}
 					>
 						{isMore

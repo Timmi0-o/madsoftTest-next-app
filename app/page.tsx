@@ -9,32 +9,29 @@ function Page() {
 		<>
 			<Container>
 				<div className='flex flex-col items-center'>
-					<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[13px] select-none'>
+					<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[10px] select-none'>
 						Ваши тесты
 					</p>
 					<div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
 						{items.map((item, i) => (
-							<>
-								<div key={i}>
-									<TestItem
-										title={item.title}
-										time={item.time}
-										attempt={item.attempt}
-										description={item.description}
-										numberQuestions={item.numberQuestions}
-										id={i}
-									/>
-								</div>
-								<div className='absolute top-0 left-0 size-[full] z-[-1] border bg-black'></div>
-							</>
+							<div key={i}>
+								<TestItem
+									title={item.title}
+									time={item.time}
+									attempt={item.attempt}
+									description={item.description}
+									numberQuestions={item.numberQuestions}
+									id={i}
+								/>
+							</div>
 						))}
 					</div>
 				</div>
 			</Container>
-			<div className='block sm:hidden absolute w-full mt-[-80px]'>
-				<Swiper centeredSlides spaceBetween={10} slidesPerView={1.5}>
+			<div className='block sm:hidden w-full mt-[-80px]'>
+				<Swiper centeredSlides spaceBetween={40} slidesPerView={1.4}>
 					{items.map((item, i) => (
-						<SwiperSlide className='pt-[110px] mb-[60px]' key={i}>
+						<SwiperSlide key={i} className='pt-[110px]'>
 							<div>
 								<TestItem
 									title={item.title}

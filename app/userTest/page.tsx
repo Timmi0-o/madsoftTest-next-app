@@ -9,51 +9,49 @@ export default function Test() {
 		<Container>
 			<div className=' overflow-x-hidden'>
 				{subjects.map((subject, i) => (
-					<>
-						<div className='flex flex-col items-center mb-[30px]' key={i}>
-							<p className='text-[28px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[10px] select-none'>
-								{subject}
-							</p>
-							<div className='hidden sm:grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
+					<div className='flex flex-col items-center mb-[30px]' key={i}>
+						<p className='text-[28px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[10px] select-none'>
+							{subject}
+						</p>
+						<div className='hidden sm:grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
+							{items.map(
+								(item, i) =>
+									subject === item.title && (
+										<div key={i}>
+											<TestItem
+												title={item.title}
+												time={item.time}
+												attempt={item.attempt}
+												description={item.description}
+												numberQuestions={items.length}
+												id={i}
+											/>
+										</div>
+									)
+							)}
+						</div>
+						<div className='sm:hidden w-full mt-[-70px]'>
+							<Swiper centeredSlides slidesPerView={1.2}>
 								{items.map(
-									(item, i) =>
+									(item, j) =>
 										subject === item.title && (
-											<div key={i}>
-												<TestItem
-													title={item.title}
-													time={item.time}
-													attempt={item.attempt}
-													description={item.description}
-													numberQuestions={items.length}
-													id={i}
-												/>
-											</div>
+											<SwiperSlide className='pt-[110px]' key={j}>
+												<div>
+													<TestItem
+														title={item.title}
+														time={item.time}
+														attempt={item.attempt}
+														description={item.description}
+														numberQuestions={items.length}
+														id={j}
+													/>
+												</div>
+											</SwiperSlide>
 										)
 								)}
-							</div>
-							<div className='sm:hidden w-full mt-[-70px]'>
-								<Swiper centeredSlides spaceBetween={0} slidesPerView={1.2}>
-									{items.map(
-										(item, j) =>
-											subject === item.title && (
-												<SwiperSlide className='pt-[110px]' key={j}>
-													<div>
-														<TestItem
-															title={item.title}
-															time={item.time}
-															attempt={item.attempt}
-															description={item.description}
-															numberQuestions={items.length}
-															id={j}
-														/>
-													</div>
-												</SwiperSlide>
-											)
-									)}
-								</Swiper>
-							</div>
+							</Swiper>
 						</div>
-					</>
+					</div>
 				))}
 			</div>
 		</Container>
