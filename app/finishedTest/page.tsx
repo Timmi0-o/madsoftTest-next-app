@@ -25,12 +25,12 @@ export default function FinishedTest() {
 				<div className='text-[32px] md:text-[60px] font-medium'>
 					Завершенные тесты
 				</div>
-				<div className='flex flex-col justify-between items-center gap-[30px] w-full min-h-[500px]'>
+				<div className='flex flex-col justify-between items-center gap-[30px] w-full min-h-[450px]'>
 					{tests.length >= 1 ? (
 						<div
 							className={`grid ${
 								tests.length > 1 ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1'
-							} gap-[20px] border-[1px] border-[#00000075] rounded-[8px] p-[20px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-fit max-h-[400px] md:max-h-[600px] overflow-x-auto`}
+							} gap-[10px] border-[1px] border-[#00000075] rounded-[8px] p-[10px] mx-[10px] md:mx-0 bg-[#f2f2f2] w-fit max-h-[300px] md:max-h-[600px] overflow-x-auto`}
 						>
 							{tests.map((test, i) => (
 								<div

@@ -13,7 +13,7 @@ export default function Test() {
 						<p className='text-[28px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[10px] select-none'>
 							{subject}
 						</p>
-						<div className='hidden sm:grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
+						<div className='hidden xl:grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
 							{items.map(
 								(item, i) =>
 									subject === item.title && (
@@ -30,8 +30,31 @@ export default function Test() {
 									)
 							)}
 						</div>
-						<div className='sm:hidden w-full mt-[-70px]'>
-							<Swiper centeredSlides slidesPerView={1.2}>
+						<div className='xl:hidden w-full mt-[-80px]'>
+							<Swiper
+								breakpoints={{
+									300: {
+										slidesPerView: 1.25,
+									},
+									350: {
+										slidesPerView: 1.3,
+									},
+									400: {
+										slidesPerView: 1.45,
+									},
+									500: {
+										slidesPerView: 1.9,
+									},
+									730: {
+										slidesPerView: 2,
+									},
+									900: {
+										slidesPerView: 2.5,
+									},
+								}}
+								centeredSlides
+								spaceBetween={60}
+							>
 								{items.map(
 									(item, j) =>
 										subject === item.title && (

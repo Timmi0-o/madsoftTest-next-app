@@ -12,7 +12,7 @@ function Page() {
 					<p className='text-[32px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[20px] xl:px-0 tracking-[10px] select-none'>
 						Ваши тесты
 					</p>
-					<div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
+					<div className='hidden xl:grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
 						{items.map((item, i) => (
 							<div key={i}>
 								<TestItem
@@ -28,8 +28,31 @@ function Page() {
 					</div>
 				</div>
 			</Container>
-			<div className='block sm:hidden w-full mt-[-80px]'>
-				<Swiper centeredSlides spaceBetween={40} slidesPerView={1.4}>
+			<div className='block xl:hidden w-full mt-[-80px]'>
+				<Swiper
+					breakpoints={{
+						300: {
+							slidesPerView: 1.25,
+						},
+						350: {
+							slidesPerView: 1.3,
+						},
+						400: {
+							slidesPerView: 1.45,
+						},
+						500: {
+							slidesPerView: 1.9,
+						},
+						730: {
+							slidesPerView: 2,
+						},
+						900: {
+							slidesPerView: 2.5,
+						},
+					}}
+					centeredSlides
+					spaceBetween={40}
+				>
 					{items.map((item, i) => (
 						<SwiperSlide key={i} className='pt-[110px]'>
 							<div>

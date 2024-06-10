@@ -41,9 +41,9 @@ export const TestItem = ({
 				onClick={() => {
 					setIsMore(!isMore)
 				}}
-				className={`relative w-[255px] lg-w-[300px] xl:w-[350px] ${
+				className={`relative w-[280px] md:w-[350px] ${
 					isMore
-						? 'h-[480px] md:h-[550px] xl:h-[500px] rounded-[16px] z-20 translate-y-[-60px]  md:translate-y-[-40px]'
+						? 'h-[480px] xl:h-[500px] rounded-[16px] z-20 translate-y-[-60px]  md:translate-y-[-40px]'
 						: 'h-[200px] md:h-[340px] xl:h-[290px] rounded-[26px]'
 				} ${
 					!isMore
@@ -98,7 +98,7 @@ export const TestItem = ({
 							isMore ? 'mt-0' : 'mt-[50px]'
 						}`}
 					>
-						<p className='text-[#000000] select-none tracking-[0.7px] text-[14px]'>{`${
+						<p className='text-[#000000] select-none tracking-[0.7px] text-[14px] md:text-[18px]'>{`${
 							isMore ? description : `${description.slice(0, 60)}...`
 						}`}</p>
 					</div>
