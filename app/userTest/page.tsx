@@ -11,7 +11,7 @@ export default function Test() {
 				{subjects.map((subject, i) => (
 					<>
 						<div className='flex flex-col items-center mb-[30px]' key={i}>
-							<p className='text-[28px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[13px] select-none'>
+							<p className='text-[28px] md:text-[60px] text-center font-[500] text-[#212529] mb-[30px] px-[10px] xl:px-0 tracking-[10px] select-none'>
 								{subject}
 							</p>
 							<div className='hidden sm:grid md:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
@@ -31,12 +31,12 @@ export default function Test() {
 										)
 								)}
 							</div>
-							<div className='flex items-start sm:hidden w-full mt-[-70px]'>
-								<Swiper spaceBetween={20} slidesPerView={1.2}>
+							<div className='sm:hidden w-full mt-[-70px]'>
+								<Swiper centeredSlides spaceBetween={0} slidesPerView={1.2}>
 									{items.map(
 										(item, j) =>
 											subject === item.title && (
-												<SwiperSlide className='pt-[110px] mb-[20px]' key={j}>
+												<SwiperSlide className='pt-[110px]' key={j}>
 													<div>
 														<TestItem
 															title={item.title}

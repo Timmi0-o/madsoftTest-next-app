@@ -14,24 +14,27 @@ function Page() {
 					</p>
 					<div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[20px]'>
 						{items.map((item, i) => (
-							<div key={i}>
-								<TestItem
-									title={item.title}
-									time={item.time}
-									attempt={item.attempt}
-									description={item.description}
-									numberQuestions={item.numberQuestions}
-									id={i}
-								/>
-							</div>
+							<>
+								<div key={i}>
+									<TestItem
+										title={item.title}
+										time={item.time}
+										attempt={item.attempt}
+										description={item.description}
+										numberQuestions={item.numberQuestions}
+										id={i}
+									/>
+								</div>
+								<div className='absolute top-0 left-0 size-[full] z-[-1] border bg-black'></div>
+							</>
 						))}
 					</div>
 				</div>
 			</Container>
 			<div className='block sm:hidden absolute w-full mt-[-80px]'>
-				<Swiper spaceBetween={0} slidesPerView={1.2}>
+				<Swiper centeredSlides spaceBetween={10} slidesPerView={1.5}>
 					{items.map((item, i) => (
-						<SwiperSlide className='pt-[110px] mb-[60px] pl-[12%]' key={i}>
+						<SwiperSlide className='pt-[110px] mb-[60px]' key={i}>
 							<div>
 								<TestItem
 									title={item.title}
